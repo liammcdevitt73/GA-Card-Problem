@@ -6,7 +6,7 @@ class Population:
     
     The main functions are initialization and evaluation.
     
-    Authors: Liam McDevitt & Andrew Pozzuloi
+    Authors: Liam McDevitt & Andrew Pozzuoli
     Date:    2023 - 03 - 02
     """
     
@@ -19,6 +19,9 @@ class Population:
         """
         # Initialize global variables
         self.pop_size = pop_size
+        
+        # Initialize population
+        self.init_pop(pop_size)
 
     def init_pop(self):
         """

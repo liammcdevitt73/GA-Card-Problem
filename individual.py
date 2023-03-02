@@ -14,7 +14,7 @@ class Individual:
 
     def __init__(self, chromosome=[]):
         """
-        This funciton initializes a new candidate solution
+        This function initializes a new candidate solution
 
         :param chromosome: A list of unique integers in some order. Default []
         """

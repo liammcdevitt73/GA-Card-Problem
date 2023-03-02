@@ -4,7 +4,7 @@ class GA:
     The main genetic algorithm library class meant to be generalizable to numerous
     discrete optimization problems.
     
-    Authors: Liam McDevitt & Andrew Pozzuloi
+    Authors: Liam McDevitt & Andrew Pozzuoli
     Date:    2023 - 03 - 02
     """
    
