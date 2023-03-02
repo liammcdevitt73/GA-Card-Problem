@@ -1,4 +1,6 @@
 import random
+import population as pop
+import individual as ind
 class GA:
     """
     The main genetic algorithm library class meant to be generalizable to numerous
@@ -35,7 +37,7 @@ class GA:
         self.num_elites      = num_elites
         
         # Initialize population
-        self.population = Population(population_size)
+        self.population = pop.Population(population_size)
         
         # Run GA
         self.run()
@@ -53,9 +55,9 @@ class GA:
         """
         
         # Elitism -> Keep the best num_elites from the previous population
-        sortedPop = min(self.population, key=lambda x : x.fitness)
+        sortedPop = min(self.population.individuals, key=lambda x : x.fitness)
         for i in range(self.num_elites):
-            self.population[i] = sortedPop[i]
+            self.population.individuals[i] = sortedPop[i]
         
         # Selection -> Create a whole new population (generational)
         for i in range(self.num_elites, self.population_size):
@@ -67,9 +69,9 @@ class GA:
             if random.random() < self.crossover_rate:
                 children = []
                 if self.crossover_type == 'UOX':
-                    children = self.crossover_UOX(self.population[i], self.population[i + 1])
-                self.population[i]     = children[0]
-                self.population[i + 1] = children[1]                   
+                    children = self.crossover_UOX(self.population.individuals[i], self.population.individuals[i + 1])
+                self.population.individuals[i]     = children[0]
+                self.population.individuals[i + 1] = children[1]                   
                     
         
         # Mutation -> Alter an individual for exploration of the search space
@@ -79,7 +81,7 @@ class GA:
                     self.mutation_reverse(self.population.individuals[i])
         
         # Evaluate -> Determine the fitness of each individual in the new population
-        self.pop.evaluate_population()
+        self.population.eval_pop()
         
         
     def crossover_UOX(self, p1, p2):
@@ -120,7 +122,7 @@ class GA:
                         break
         
         # Return final children
-        return [Individual(c1), Individual(c2)]
+        return [ind.Individual(c1), ind.Individual(c2)]
     
     def selection_tournament(self, k=4):
         """
@@ -133,7 +135,7 @@ class GA:
         Returns:
             Individual: A possible parent for reproduction.
         """
-        return min(random.sample(self.population, k), key=lambda x : x.fitness)
+        return min(random.sample(self.population.individuals, k), key=lambda x : x.fitness)
         
     def mutation_reverse(self, i):
         """

@@ -1,4 +1,6 @@
 import random
+import individual
+import problem
 
 class Population:
     """
@@ -10,7 +12,7 @@ class Population:
     Date:    2023 - 03 - 02
     """
     
-    def __init__(pop_size=50):
+    def __init__(self, pop_size=50):
         """
         Initializes the population class.
 
@@ -21,17 +23,17 @@ class Population:
         self.pop_size = pop_size
         
         # Initialize population
-        self.init_pop(pop_size)
+        self.init_pop()
 
     def init_pop(self):
         """
         Initializes each chromosome in the population randomly from the gene pool.
         """
-        self.individuals = [random.shuffle(problem.gene_pool) for i in range(self.pop_size)]
+        self.individuals = [individual.Individual(random.shuffle(problem.Problem.gene_pool)) for i in range(self.pop_size)]
         
     def eval_pop(self):
         """
         Evaluates the fitness of each individual in the population.
         """
         for individual in self.individuals:
-            individual.fitness = problem.eval(individual.chromosome)
+            individual.fitness = problem.Problem.eval(individual.chromosome)

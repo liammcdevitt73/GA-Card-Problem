@@ -1,8 +1,9 @@
 import ga
-
-
 class Problem:
     """ 
+    Authors: Liam McDevitt & Andrew Pozzuoli
+    Date:    2023 - 03 - 02
+    
     The problem class gives the chromosome representation, fitness evaluation, and whether
     the problem is a minimization or maximization.
 
@@ -14,6 +15,7 @@ class Problem:
 
     GOAL_SUM = 36
     GOAL_PROD = 360
+    gene_pool = []
 
     def __init__(self, gene_pool=[], min=True):
         """ Initialize chromosome gene_pool and whether the problem is minimization
@@ -44,11 +46,8 @@ class Problem:
         
         return abs(sum - self.GOAL_SUM) + abs(prod - self.GOAL_PROD)
 
-
 def main():
     Problem(list(range(0,11)), True)
     
-
-
 if __name__ == '__main__':
     main()
