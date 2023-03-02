@@ -1,4 +1,3 @@
-
 from math import prod
 import random
 
@@ -12,7 +11,6 @@ class Individual:
     # Date:    2023 - 02 - 22
 
     """
-
 
     def __init__(self, chromosome=[]):
         """

@@ -1,13 +1,15 @@
-# Authors: Liam McDevitt & Andrew Pozzuoli
-# Date:    2023 - 02 - 22
-
-# Imports
 import random
-
-# Genetic Algorithm (GA) library
 class GA:
+    """
+    The main genetic algorithm library class meant to be generalizable to numerous
+    discrete optimization problems.
+    
+    Authors: Liam McDevitt & Andrew Pozzuloi
+    Date:    2023 - 03 - 02
+    """
    
-    def __init__(self, num_generations=50, population_size=50, crossover_rate=0.9, mutation_rate=0.1, selection_type='tournament', crossover_type='UOX', mutation_type='reverse', num_elites=1):
+    def __init__(self, num_generations=50, population_size=50, crossover_rate=0.9, mutation_rate=0.1, 
+                 selection_type='tournament', crossover_type='UOX', mutation_type='reverse', num_elites=1):
         """
         Initializes and runs the GA when the object is created.
 
