@@ -24,7 +24,7 @@ class Problem:
         """
         self.gene_pool = gene_pool
         self.min = min
-        self.ga = ga.GA() # Run the GA
+        self.ga = ga.GA(self) # Run the GA
 
     def eval(self, ind = []):
         """
@@ -35,7 +35,7 @@ class Problem:
         prod = 1
         split = False
 
-        for i in ind:
+        for i in range(len(ind)):
             if ind[i] == 0:     # If we have reached the split, stop summing
                 split = True
                 continue
